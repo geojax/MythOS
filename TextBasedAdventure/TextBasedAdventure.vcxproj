@@ -149,6 +149,9 @@
     <ClInclude Include="Rooms.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Bedroom0.txt" />
+    <Text Include="End.txt" />
+    <Text Include="Graveyard0.txt" />
     <Text Include="Kitchen0.txt" />
     <Text Include="Map.txt" />
   </ItemGroup>

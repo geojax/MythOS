@@ -1,1 +1,7 @@
-The kitchen is scary.
+Kitchen
+
+This is where you cook.
+
+1) Beep 2) Bap 3) Boop 4) Whadoop
+
+[Bedroom0,Kitchen1,Kitchen2]

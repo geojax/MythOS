@@ -1,0 +1,7 @@
+Bedroom
+
+This is where you sleep.
+
+1) Beep 2) Bap 3) Boop 4) Whadoop
+
+[Graveyard0,Kitchen1,Kitchen2]

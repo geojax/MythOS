@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Rooms">
+      <UniqueIdentifier>{527b30f6-4bc5-4af1-bb1b-e49f9f1910cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -37,11 +40,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Map.txt">
-      <Filter>Source Files</Filter>
-    </Text>
     <Text Include="Kitchen0.txt">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Rooms</Filter>
+    </Text>
+    <Text Include="Map.txt">
+      <Filter>Source Files\Rooms</Filter>
+    </Text>
+    <Text Include="Bedroom0.txt">
+      <Filter>Source Files\Rooms</Filter>
+    </Text>
+    <Text Include="Graveyard0.txt">
+      <Filter>Source Files\Rooms</Filter>
+    </Text>
+    <Text Include="End.txt">
+      <Filter>Source Files\Rooms</Filter>
     </Text>
   </ItemGroup>
 </Project>
