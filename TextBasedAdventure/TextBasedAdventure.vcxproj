@@ -147,6 +147,10 @@
     <ClInclude Include="PlotNode.h" />
     <ClInclude Include="Rooms.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Kitchen0.txt" />
+    <Text Include="Map.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
