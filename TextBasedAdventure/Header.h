@@ -28,6 +28,8 @@ string readFile(string filename) { // prints out description and returns exit ch
 int getInput(string sInput, int &iInput) {
 	try {
 		iInput = stoi(sInput);
+		if (iInput > 3 || iInput < 1)
+			throw("ERROR: Not a valid input!");
 	}
 	catch(exception e) {
 		cout << "ERROR: " << e.what() << '\n';
