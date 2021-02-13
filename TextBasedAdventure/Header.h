@@ -33,10 +33,13 @@ int getInput(string sInput, int &iInput) {
 	try {
 		iInput = stoi(sInput);
 		if (iInput > 3 || iInput < 1)
-			throw("ERROR: Not a valid input!");
+			throw(iInput);
 	}
 	catch(exception e) {
 		cout << "ERROR: " << e.what() << '\n';
+	}
+	catch (int iInput) {
+		cout << iInput << " is out of input range!";
 	}
 	return iInput;
 }
