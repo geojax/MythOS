@@ -2,6 +2,6 @@ StartingRoom
 
 This is where you start.
 
-1) Beep 2) Bap 3) Boop 4) Whadoop
+1) Beep 2) Bap 3) Boop
 
 [Kitchen0,Kitchen1,Kitchen2]

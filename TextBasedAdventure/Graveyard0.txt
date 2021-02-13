@@ -2,6 +2,6 @@ Graveyard
 
 This is where you die.
 
-1) Beep 2) Bap 3) Boop 4) Whadoop
+1) Beep 2) Bap 3) Boop 
 
-[Exit,Exit,Exit]
+[End,End,End]

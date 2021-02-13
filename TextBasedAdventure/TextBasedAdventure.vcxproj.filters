@@ -43,9 +43,6 @@
     <Text Include="Kitchen0.txt">
       <Filter>Source Files\Rooms</Filter>
     </Text>
-    <Text Include="Map.txt">
-      <Filter>Source Files\Rooms</Filter>
-    </Text>
     <Text Include="Bedroom0.txt">
       <Filter>Source Files\Rooms</Filter>
     </Text>
@@ -53,6 +50,9 @@
       <Filter>Source Files\Rooms</Filter>
     </Text>
     <Text Include="End.txt">
+      <Filter>Source Files\Rooms</Filter>
+    </Text>
+    <Text Include="START.txt">
       <Filter>Source Files\Rooms</Filter>
     </Text>
   </ItemGroup>

@@ -3,7 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
+#define START_FILE_STRING "START.txt"
+#define END_FILE_STRING "End.txt"
 using namespace std;
 
 #define MAX_LINES_OF_DESCRIPTION 200
@@ -11,7 +12,7 @@ string readFile(string filename) { // prints out description and returns exit ch
 
 	string myText = "";
 	ifstream RoomFile(filename);
-	if (filename == "END") {
+	if (filename == END_FILE_STRING) {
 		return "";
 	}
 
@@ -20,7 +21,7 @@ string readFile(string filename) { // prints out description and returns exit ch
 		cout << myText << '\n';
 		getline(RoomFile, myText);
 		if (++i > MAX_LINES_OF_DESCRIPTION) {
-			cout << "ERROR: Description for " + filename + ".txt is too long or missing end statement!";
+			cout << "ERROR: Description for " + filename + " is too long, missing an end, or the file doesn't exist!";
 			return "";
 		}
 	}
@@ -54,6 +55,7 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 		if (exits[i] == ',')
 		{
 			--input;
+			++i;
 			if (input > 0)
 				selectedExit = "";
 		}

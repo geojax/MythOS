@@ -153,7 +153,7 @@
     <Text Include="End.txt" />
     <Text Include="Graveyard0.txt" />
     <Text Include="Kitchen0.txt" />
-    <Text Include="Map.txt" />
+    <Text Include="START.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

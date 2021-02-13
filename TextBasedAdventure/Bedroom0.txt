@@ -2,6 +2,6 @@ Bedroom
 
 This is where you sleep.
 
-1) Beep 2) Bap 3) Boop 4) Whadoop
+1) End 2) Graveyard 3) Start
 
-[Graveyard0,Kitchen1,Kitchen2]
+[End,Graveyard0,START]
