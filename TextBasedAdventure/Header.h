@@ -65,4 +65,5 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 		}
 		selectedExit += exits[i];
 	}
+	return selectedExit; // if it is the last exit in the list
 }
