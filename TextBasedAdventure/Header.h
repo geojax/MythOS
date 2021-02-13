@@ -25,6 +25,15 @@ string readFile(string filename) { // prints out description and returns exit ch
 	RoomFile.close();
 }
 
+int getInput(string sInput, int &iInput) {
+	try {
+		iInput = stoi(sInput);
+	}
+	catch(exception e) {
+		cout << "ERROR: " << e.what() << '\n';
+	}
+	return iInput;
+}
 /*Cycle through exits string, look for one less comma than user's input*/
 			/* add each character to selectedExit
 			if we reach a comma, selectedExit becomes an empty string
