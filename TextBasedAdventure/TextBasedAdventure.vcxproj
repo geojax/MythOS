@@ -143,6 +143,7 @@
     <ClCompile Include="PlotNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="PlotNode.h" />
     <ClInclude Include="Rooms.h" />
