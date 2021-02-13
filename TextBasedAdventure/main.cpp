@@ -1,47 +1,57 @@
 #include <iostream>
 #include <fstream>
-
-using namespace std;
 #include "PlotNode.h"
 #include "Rooms.h"
 
-string readFile(string fileName){ //prints out dscrp and gets exit choices 
+using namespace std;
+#define MAX_LINES_OF_DESCRIPTION 200
+string readFile(string filename){ // prints out description and returns exit choices 
 
 	string myText = "";
-	ifstream MyReadFile("Map.txt");
-
-
+	ifstream RoomFile(filename);
+	int i = 0;
 	while (myText[0] != '[') {
-		cout << myText << "\n";
-		getline(MyReadFile, myText);
+		cout << myText;
+		getline(RoomFile, myText);
+		if (++i > 200) {
+			cout << "ERROR: Description for " + filename + ".txt is too long or missing end statement!";
+			return "";
+		}
 	}
 
-	return myText;
-	MyReadFile.close();
+	return myText; // myText holds the exits as a string
+	RoomFile.close();
 }
 
-
-
-int main() {
-
-	string exits = readFile("Map.txt");
-	int n = 0;
-
+/*Cycle through exits string, look for one less comma than user's input*/
+			/* add each character to selectedExit
+			if we reach a comma, selectedExit becomes an empty string
+			Subtract 1 from input at each comma
+			if input == 0, return "[selectedExit].txt"*/
+string getExit(string exits, int input) { /* get exit from string of exits */
+	string selectedExit = "";
 	for (int i = 1; exits[i] != ']'; ++i) {
 		if (exits[i] == ',')
 		{
-			++n;
+			--input;
+			selectedExit = "";
 		}
-		exits[n] += exits[i];
-	} 
+		if (input == 0)
+		{
+			return selectedExit;
+		}
+		selectedExit += exits[i];
+	}
+}
 
+int main() {
+
+	string exits = readFile("Map.txt"); // exits as one long string, commas in between
+	// we need a throw/catch statement here
 	int input = 0;
-
 	cin >> input;
 
-	ifstream MyReadFile2(exits[input - 1] + ".txt");
-	getline(MyReadFile2, myText);
-	cout << myText;
+	readFile(getExit(exits, input) + ".txt");
 
 	return 0;
 }
