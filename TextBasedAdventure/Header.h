@@ -11,6 +11,10 @@ string readFile(string filename) { // prints out description and returns exit ch
 
 	string myText = "";
 	ifstream RoomFile(filename);
+	if (filename == "END") {
+		return "";
+	}
+
 	int i = 0;
 	while (myText[0] != '[') {
 		cout << myText << '\n';
