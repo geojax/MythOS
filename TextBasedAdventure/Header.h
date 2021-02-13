@@ -11,6 +11,10 @@ string readFile(string filename) { // prints out description and returns exit ch
 
 	string myText = "";
 	ifstream RoomFile(filename);
+	if (filename == "END") {
+		return "";
+	}
+
 	int i = 0;
 	while (myText[0] != '[') {
 		cout << myText << '\n';
@@ -25,6 +29,17 @@ string readFile(string filename) { // prints out description and returns exit ch
 	RoomFile.close();
 }
 
+int getInput(string sInput, int &iInput) {
+	try {
+		iInput = stoi(sInput);
+		if (iInput > 3 || iInput < 1)
+			throw("ERROR: Not a valid input!");
+	}
+	catch(exception e) {
+		cout << "ERROR: " << e.what() << '\n';
+	}
+	return iInput;
+}
 /*Cycle through exits string, look for one less comma than user's input*/
 			/* add each character to selectedExit
 			if we reach a comma, selectedExit becomes an empty string
