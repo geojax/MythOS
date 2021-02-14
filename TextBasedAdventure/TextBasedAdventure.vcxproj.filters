@@ -21,39 +21,23 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlotNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlotNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rooms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Kitchen0.txt">
-      <Filter>Source Files\Rooms</Filter>
-    </Text>
     <Text Include="Bedroom0.txt">
-      <Filter>Source Files\Rooms</Filter>
-    </Text>
-    <Text Include="Graveyard0.txt">
       <Filter>Source Files\Rooms</Filter>
     </Text>
     <Text Include="End.txt">
       <Filter>Source Files\Rooms</Filter>
     </Text>
-    <Text Include="START.txt">
-      <Filter>Source Files\Rooms</Filter>
-    </Text>
+    <Text Include="rOomMS\Bedroom0.txt" />
+    <Text Include="rOomMS\End.txt" />
+    <Text Include="rOomMS\Graveyard0.txt" />
+    <Text Include="rOomMS\Kitchen0.txt" />
+    <Text Include="START.txt" />
   </ItemGroup>
 </Project>

@@ -140,19 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlotNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
-    <ClInclude Include="Node.h" />
-    <ClInclude Include="PlotNode.h" />
-    <ClInclude Include="Rooms.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Bedroom0.txt" />
     <Text Include="End.txt" />
-    <Text Include="Graveyard0.txt" />
-    <Text Include="Kitchen0.txt" />
+    <Text Include="rOomMS\Bedroom0.txt" />
+    <Text Include="rOomMS\End.txt" />
+    <Text Include="rOomMS\Graveyard0.txt" />
+    <Text Include="rOomMS\Kitchen0.txt" />
     <Text Include="START.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

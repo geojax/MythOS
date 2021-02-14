@@ -1,0 +1,7 @@
+Kitchen
+
+This is where you cook.
+
+1) Beep 2) Bap 3) Graveyard
+
+[Bedroom0,Bedroom0,Graveyard0]

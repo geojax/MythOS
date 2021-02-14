@@ -1,7 +1,0 @@
-Kitchen
-
-This is where you cook.
-
-1) Beep 2) Bap 3) Boop
-
-[Bedroom0,Bedroom0,Bedroom0]

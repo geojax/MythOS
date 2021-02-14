@@ -5,6 +5,7 @@
 #include <string>
 #define START_FILE_STRING "START.txt"
 #define END_FILE_STRING "End.txt"
+
 using namespace std;
 
 #define MAX_LINES_OF_DESCRIPTION 200
@@ -45,10 +46,7 @@ int getInput(string sInput, int &iInput) {
 	return iInput;
 }
 /*Cycle through exits string, look for one less comma than user's input*/
-			/* add each character to selectedExit
-			if we reach a comma, selectedExit becomes an empty string
-			Subtract 1 from input at each comma
-			if input == 0, return "[selectedExit].txt"*/
+
 string getExit(string exits, int input) { /* get exit from string of exits */
 	string selectedExit = "";
 	for (int i = 1; exits[i] != ']'; ++i) {

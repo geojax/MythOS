@@ -1,7 +1,0 @@
-Graveyard
-
-This is where you die.
-
-1) Beep 2) Bap 3) Boop 
-
-[End,End,End]

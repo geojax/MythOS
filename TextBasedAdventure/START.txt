@@ -2,6 +2,6 @@ StartingRoom
 
 This is where you start.
 
-1) Beep 2) Bap 3) Boop
+1) Kithen 2) Graveyard 
 
-[Kitchen0,Kitchen1,Kitchen2]
+[rOomMS\Kitchen0,Graveyard0,Kitchen2]
