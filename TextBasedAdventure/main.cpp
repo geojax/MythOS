@@ -38,11 +38,32 @@ int main() {
 	while (gameIsRunning)
 	{
 		string sInput = "";
-		cin >> sInput;
 		int Input;
-		getInput(sInput, Input);
 
-		selectedExit = getExit(exits, Input) + ".txt"; // uses the last string of exits to find the right exit
+	GetInput:
+		cin >> sInput;
+		try
+		{
+			//getInput(sInput, Input);
+			Input = stoi(sInput);
+		}
+		catch (exception e) {
+			cout << "(enter a number)\n\n";
+			goto GetInput;
+		}
+		catch (int i) {
+			cout << "(" << i << " is out of range)\n\n";
+		}
+
+		try 
+		{
+			selectedExit = getExit(exits, Input) + ".txt"; // uses the last string of exits to find the right exit
+		}
+		catch (int input) {
+			cout << "(your input was not an option)\n\n";
+			goto GetInput;
+		}
+
 		if (currentFolder == getFolder(selectedExit, currentFolder)) //if the current folder isn't changed
 		{
 
@@ -54,7 +75,6 @@ int main() {
 		{
 			selectedExit = selectedExit.substr(13, selectedExit.length());
 		}
-		//exits = readFile(getExit(exits, Input) + ".txt"); // gets the new full string of exits
 
 		exits = readFile(selectedExit);
 

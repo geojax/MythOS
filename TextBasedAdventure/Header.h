@@ -32,22 +32,24 @@ string readFile(string filename) { // prints out description and returns exit ch
 }
 
 int getInput(string sInput, int &iInput) {
-	try {
+	//try {
 		iInput = stoi(sInput);
 		if (iInput > 3 || iInput < 1)
 			throw(iInput);
-	}
-	catch(exception e) {
+	//}
+	/*catch(exception e) {
 		cout << "ERROR: " << e.what() << '\n';
 	}
 	catch (int iInput) {
 		cout << iInput << " is out of input range!";
-	}
-	return iInput;
+	}*/
+	//return iInput;
 }
 /*Cycle through exits string, look for one less comma than user's input*/
 
 string getExit(string exits, int input) { /* get exit from string of exits */
+	if (input <= 0)
+		throw (input);
 	string selectedExit = "";
 	for (int i = 1; exits[i] != ']'; ++i) {
 		if (exits[i] == ',')
@@ -57,11 +59,15 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 			if (input > 0)
 				selectedExit = "";
 		}
+
 		if (input == 0)
 		{
 			return selectedExit;
 		}
+		
 		selectedExit += exits[i];
 	}
-	return selectedExit; // if it is the last exit in the list
+	if (input != 1)
+		throw(input); // otherwise throw error that input was out of range
+	return selectedExit;
 }

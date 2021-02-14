@@ -4,4 +4,4 @@ This is where you start.
 
 1) Kithen 2) Graveyard 
 
-[rOomMS\Kitchen0,Graveyard0,Kitchen2]
+[rOomMS\Kitchen0,rOomMS\Graveyard0]
