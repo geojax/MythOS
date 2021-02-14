@@ -16,15 +16,28 @@ string readFile(string filename) { // prints out description and returns exit ch
 	if (filename == END_FILE_STRING) {
 		return "";
 	}
+	// look for a bracket in the first 200 lines
+	for (int i = 0; i <= MAX_LINES_OF_DESCRIPTION; ++i)
+	{
+		getline(RoomFile, myText);
+		if (myText[0] == '[') {
+			myText = "";
+			RoomFile.clear();
+			RoomFile.seekg(0);
+			break;
+		}
+		if (i == MAX_LINES_OF_DESCRIPTION)
+			throw(filename);
+	}
 
 	int i = 0;
 	while (myText[0] != '[') {
 		cout << myText << '\n';
 		getline(RoomFile, myText);
-		if (++i > MAX_LINES_OF_DESCRIPTION) {
-			cout << "ERROR: Description for " + filename + " is too long, missing an end, or the file doesn't exist!";
+		/*if (++i > MAX_LINES_OF_DESCRIPTION) {
+			cout << "(" + filename + " is missing a '[' closing bracket in the first 200 lines. does the file exist?\n\n";
 			return "";
-		}
+		}*/
 	}
 
 	return myText; // myText holds the exits as a string

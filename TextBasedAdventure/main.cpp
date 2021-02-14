@@ -28,6 +28,8 @@ string getFolder(std::string& selectedExit, std::string currentfolder)
 
 int main() {
 
+	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
+
 	string exits = readFile(START_FILE_STRING); // exits as one long string, commas in between
 	string selectedExit;
 	string currentFolder = "";
@@ -76,7 +78,15 @@ int main() {
 			selectedExit = selectedExit.substr(13, selectedExit.length());
 		}
 
-		exits = readFile(selectedExit);
+		try 
+		{ 
+			exits = readFile(selectedExit); 
+		}
+		catch (string filename) {
+			cout << "(can't find a line in " + filename + " that starts with a '[' opening bracket. Make sure the file exists and links to other files correctly.\
+ for now try a different input.)";
+			goto GetInput;
+		}
 
 		if (selectedExit == "End.txt")
 		{
