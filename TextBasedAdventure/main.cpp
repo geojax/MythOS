@@ -12,12 +12,13 @@ string getFolder(std::string& selectedExit, std::string currentfolder)
 		if (selectedExit[i] == '\\')
 		{
 			foldername = "";
-			for (int n = 0; n < selectedExit.length() - i + 1; ++n)
+			for (int n = 0; n < i + 1; ++n)
 			{
 				foldername += selectedExit[n];
 				if (foldername == "PARENTFOLDER")
 				{
 					foldername = "";
+					++n; //to remove slash????????????
 				}
 			}
 		}
@@ -31,6 +32,7 @@ int main() {
 	string selectedExit;
 	string currentFolder = "";
 
+
 	bool gameIsRunning = true;
 
 	while (gameIsRunning)
@@ -41,11 +43,20 @@ int main() {
 		getInput(sInput, Input);
 
 		selectedExit = getExit(exits, Input) + ".txt"; // uses the last string of exits to find the right exit
-		if (currentFolder == (currentFolder = getFolder(selectedExit, currentFolder)))
+		if (currentFolder == getFolder(selectedExit, currentFolder)) //if the current folder isn't changed
 		{
+
 			selectedExit = currentFolder + selectedExit;
 		}
-		exits = readFile(getExit(exits, Input) + ".txt"); // gets the new full string of exits
+		currentFolder = getFolder(selectedExit, currentFolder);
+
+		if (selectedExit.substr(0,12) == "PARENTFOLDER")
+		{
+			selectedExit = selectedExit.substr(13, selectedExit.length());
+		}
+		//exits = readFile(getExit(exits, Input) + ".txt"); // gets the new full string of exits
+
+		exits = readFile(selectedExit);
 
 		if (selectedExit == "End.txt")
 		{

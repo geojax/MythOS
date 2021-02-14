@@ -37,7 +37,7 @@
     <Text Include="rOomMS\Bedroom0.txt" />
     <Text Include="rOomMS\End.txt" />
     <Text Include="rOomMS\Graveyard0.txt" />
-    <Text Include="rOomMS\Kitchen0.txt" />
     <Text Include="START.txt" />
+    <Text Include="rOomMS\Kitchen0.txt" />
   </ItemGroup>
 </Project>
