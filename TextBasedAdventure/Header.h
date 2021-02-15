@@ -32,6 +32,11 @@ string readFile(string filename) { // prints out description and returns exit ch
 
 	int i = 0;
 	while (myText[0] != '[') {
+		if (myText[0] == '%')
+		{
+			cin.get(); // wait for input if line starts with '%'
+			myText = myText.substr(1, myText.length());
+		}
 		cout << myText << '\n';
 		getline(RoomFile, myText);
 		/*if (++i > MAX_LINES_OF_DESCRIPTION) {
