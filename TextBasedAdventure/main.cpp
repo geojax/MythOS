@@ -4,28 +4,6 @@
 
 using namespace std;
 
-string getFolder(std::string& selectedExit, std::string currentfolder)
-{
-	string foldername = currentfolder;
-	for (int i = selectedExit.length() - 1; i >= 0; --i)
-	{
-		if (selectedExit[i] == '\\')
-		{
-			foldername = "";
-			for (int n = 0; n < i + 1; ++n)
-			{
-				foldername += selectedExit[n];
-				if (foldername == "PARENTFOLDER")
-				{
-					foldername = "";
-					++n; //to remove slash????????????
-				}
-			}
-		}
-	}
-	return foldername;
-}
-
 int main() {
 
 	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
@@ -33,7 +11,6 @@ int main() {
 	string exits = readFile(START_FILE_STRING); // exits as one long string, commas in between
 	string selectedExit;
 	string currentFolder = "";
-
 
 	bool gameIsRunning = true;
 
@@ -46,7 +23,6 @@ int main() {
 		cin >> sInput;
 		try
 		{
-			//getInput(sInput, Input);
 			Input = stoi(sInput);
 		}
 		catch (exception e) {

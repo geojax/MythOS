@@ -9,13 +9,14 @@
 using namespace std;
 
 #define MAX_LINES_OF_DESCRIPTION 200
-string readFile(string filename) { // prints out description and returns exit choices 
+string readFile(string filename) { // prints out description and returns exit options 
 
 	string myText = "";
 	ifstream RoomFile(filename);
 	if (filename == END_FILE_STRING) {
 		return "";
 	}
+
 	// look for a bracket in the first 200 lines
 	for (int i = 0; i <= MAX_LINES_OF_DESCRIPTION; ++i)
 	{
@@ -39,31 +40,13 @@ string readFile(string filename) { // prints out description and returns exit ch
 		}
 		cout << myText << '\n';
 		getline(RoomFile, myText);
-		/*if (++i > MAX_LINES_OF_DESCRIPTION) {
-			cout << "(" + filename + " is missing a '[' closing bracket in the first 200 lines. does the file exist?\n\n";
-			return "";
-		}*/
 	}
 
 	return myText; // myText holds the exits as a string
 	RoomFile.close();
 }
 
-int getInput(string sInput, int &iInput) {
-	//try {
-		iInput = stoi(sInput);
-		if (iInput > 3 || iInput < 1)
-			throw(iInput);
-	//}
-	/*catch(exception e) {
-		cout << "ERROR: " << e.what() << '\n';
-	}
-	catch (int iInput) {
-		cout << iInput << " is out of input range!";
-	}*/
-	//return iInput;
-}
-/*Cycle through exits string, look for one less comma than user's input*/
+/* Cycle through exits string, look for one less comma than user's input*/
 
 string getExit(string exits, int input) { /* get exit from string of exits */
 	if (input <= 0)
@@ -88,4 +71,26 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 	if (input != 1)
 		throw(input); // otherwise throw error that input was out of range
 	return selectedExit;
+}
+
+string getFolder(std::string& selectedExit, std::string currentfolder)
+{
+	string foldername = currentfolder;
+	for (int i = selectedExit.length() - 1; i >= 0; --i)
+	{
+		if (selectedExit[i] == '\\')
+		{
+			foldername = "";
+			for (int n = 0; n < i + 1; ++n)
+			{
+				foldername += selectedExit[n];
+				if (foldername == "PARENTFOLDER")
+				{
+					foldername = "";
+					++n;
+				}
+			}
+		}
+	}
+	return foldername;
 }

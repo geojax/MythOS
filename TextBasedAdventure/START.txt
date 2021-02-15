@@ -2,6 +2,6 @@ StartingRoom
 
 This is where you start.
 
-1) Kithen 2) Graveyard 
+1) Kitchen 2) Graveyard 
 
 [rOomMS\Kitchen0,rOomMS\Graveyard0]
