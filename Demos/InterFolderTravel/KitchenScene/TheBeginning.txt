@@ -1,0 +1,8 @@
+You're in the captain's kitchen. He has asked for your most delicious stew. Unfortunately you don't know how to make stew.
+There's a rat in the corner and a fishing rod on the deck.
+
+1)Try and catch the rat
+2)Go fishing and hope for a catch
+3)Find the captain and apologize
+
+[RatSoup,Fishing,CaptainAnger]
