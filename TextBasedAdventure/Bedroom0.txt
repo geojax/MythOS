@@ -1,7 +1,0 @@
-Bedroom
-
-This is where you sleep.
-
-1) End 2) Graveyard 3) Start
-
-[End,Graveyard0,START]

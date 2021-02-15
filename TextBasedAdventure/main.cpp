@@ -68,7 +68,6 @@ int main() {
 
 		if (currentFolder == getFolder(selectedExit, currentFolder)) //if the current folder isn't changed
 		{
-
 			selectedExit = currentFolder + selectedExit;
 		}
 		currentFolder = getFolder(selectedExit, currentFolder);
