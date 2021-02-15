@@ -1,4 +1,0 @@
-This is the start.
-
-1) Middle 2) go to the middle 3) go to the end
-[Middle,Middle,End]

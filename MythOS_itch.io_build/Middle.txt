@@ -1,4 +1,0 @@
-This is the middle.
-1)Go to start 2)Go to end
-
-[START,End,START,START]
