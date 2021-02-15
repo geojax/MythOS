@@ -1,7 +1,7 @@
 Welcome to MythOS!
-Join our Discord server: https://discord.gg/rPM6Y2ABRX
+Join our Discord server! https://discord.gg/rPM6Y2ABRX
 Our Github! https://github.com/geojax/MythOS/new/main?readme=1
------------------------------------------------------------------
+
 			How to begin
 MythOS always starts with the file called "START.txt", so make sure it's there!
 MythOS only ends when it is sent to "End.txt", so make sure that's also there!
