@@ -145,13 +145,8 @@
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Bedroom0.txt" />
-    <Text Include="End.txt" />
-    <Text Include="rOomMS\Bedroom0.txt" />
-    <Text Include="rOomMS\End.txt" />
-    <Text Include="rOomMS\Graveyard0.txt" />
-    <Text Include="rOomMS\Kitchen0.txt" />
     <Text Include="START.txt" />
+    <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

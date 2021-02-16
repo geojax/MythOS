@@ -35,7 +35,10 @@ string readFile(string filename) { // prints out description and returns exit op
 	while (myText[0] != '[') {
 		if (myText[0] == '%')
 		{
-			cin.get(); // wait for input if line starts with '%'
+			cin.clear();
+			cin.ignore();
+			//cin.get(); // wait for input if line starts with '%'
+			getc(stdin);
 			myText = myText.substr(1, myText.length());
 		}
 		cout << myText << '\n';
