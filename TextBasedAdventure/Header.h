@@ -41,9 +41,8 @@ string readFile(string filename) { // prints out description and returns exit op
 		cout << myText << '\n';
 		getline(RoomFile, myText);
 	}
-
-	return myText; // myText holds the exits as a string
 	RoomFile.close();
+	return myText; // myText holds the exits as a string
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
