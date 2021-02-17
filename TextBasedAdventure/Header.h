@@ -3,8 +3,15 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#ifdef _WIN32
+	#include "windows.h"
+#endif
+#ifdef TARGET_OS_MAC
+	#include <unistd.h>
+#endif
 #define START_FILE_STRING "START.txt"
 #define END_FILE_STRING "End.txt"
+#define SLEEP_DURATION 30
 
 using namespace std;
 
@@ -13,36 +20,39 @@ string readFile(string filename) { // prints out description and returns exit op
 
 	string myText = "";
 	ifstream RoomFile(filename);
+	char myChars[2] = { RoomFile.get() };;
+
 	if (filename == END_FILE_STRING) {
 		return "";
 	}
-
+	
 	// look for a bracket in the first 200 lines
 	for (int i = 0; i <= MAX_LINES_OF_DESCRIPTION; ++i)
 	{
 		getline(RoomFile, myText);
 		if (myText[0] == '[') {
-			myText = "";
 			RoomFile.clear();
-			RoomFile.seekg(0);
+			RoomFile.seekg(0); 
 			break;
 		}
 		if (i == MAX_LINES_OF_DESCRIPTION)
 			throw(filename);
 	}
 
-	int i = 0;
-	while (myText[0] != '[') {
-		if (myText[0] == '%')
+	while ((myChars[0] = RoomFile.get()) != '[') {
+		if (myChars[0] == '\\' && (myChars[0] = RoomFile.get()) == '%') // the loop just passed over a '\%'
 		{
-			//cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			//cin.ignore();
 			cin.get(); // wait for input if line starts with '%'
-			myText = myText.substr(1, myText.length());
+			continue;
 		}
-		cout << myText << '\n';
-		getline(RoomFile, myText);
+		myChars[1] = myChars[0];
+		cout << myChars[0];
+#ifdef _WIN32
+		Sleep(SLEEP_DURATION);
+#endif
+#ifdef TARGET_OS_MAC
+		usleep(SLEEP_DURATION);
+#endif
 	}
 
 	return myText; // myText holds the exits as a string

@@ -21,7 +21,7 @@ int main() {
 
 	GetInput:
 		cin >> sInput;
-
+		cin.ignore();
 		try
 		{
 			Input = stoi(sInput);
