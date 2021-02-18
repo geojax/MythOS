@@ -11,16 +11,16 @@
 #endif
 #define START_FILE_STRING "START.txt"
 #define END_FILE_STRING "End.txt"
-#define SLEEP_DURATION 30
+#define SLEEP_DURATION 0 // typewriter effect duration
 
 using namespace std;
 
 #define MAX_LINES_OF_DESCRIPTION 200
 string readFile(string filename) { // prints out description and returns exit options 
-
-	string myText = "";
+	cout << '\n';
+	string currentLine = "";
 	ifstream RoomFile(filename);
-	char myChars[2] = { RoomFile.get() };;
+	char myChars[2] = { RoomFile.get() };
 
 	if (filename == END_FILE_STRING) {
 		return "";
@@ -29,8 +29,8 @@ string readFile(string filename) { // prints out description and returns exit op
 	// look for a bracket in the first 200 lines
 	for (int i = 0; i <= MAX_LINES_OF_DESCRIPTION; ++i)
 	{
-		getline(RoomFile, myText);
-		if (myText[0] == '[') {
+		getline(RoomFile, currentLine);
+		if (currentLine[0] == '[') {
 			RoomFile.clear();
 			RoomFile.seekg(0); 
 			break;
@@ -47,6 +47,7 @@ string readFile(string filename) { // prints out description and returns exit op
 		}
 		myChars[1] = myChars[0];
 		cout << myChars[0];
+
 #ifdef _WIN32
 		Sleep(SLEEP_DURATION);
 #endif
@@ -55,7 +56,7 @@ string readFile(string filename) { // prints out description and returns exit op
 #endif
 	}
 
-	return myText; // myText holds the exits as a string
+	return currentLine; // myText holds the exits as a string
 	RoomFile.close();
 }
 
@@ -86,7 +87,7 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 	return selectedExit;
 }
 
-string getFolder(std::string& selectedExit, std::string currentfolder)
+string getFolder(string& selectedExit, string currentfolder)
 {
 	string foldername = currentfolder;
 	for (int i = selectedExit.length() - 1; i >= 0; --i)

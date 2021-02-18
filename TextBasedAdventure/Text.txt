@@ -3,7 +3,9 @@ This is the middle of the story.
 \%And again!
 \%And again!
 Not here...
-\%And again!
+\%And aga\%in!
+Oops I cut myself off!
 
 1)End
+
 [End]
