@@ -55,8 +55,7 @@ string readFile(string filename) { // prints out description and returns exit op
 		usleep(SLEEP_DURATION);
 #endif
 	}
-
-	return currentLine; // myText holds the exits as a string
+	return currentLine; // currentLine holds the exits as a string
 	RoomFile.close();
 }
 
