@@ -6,6 +6,7 @@ Our Github! https://github.com/geojax/MythOS/new/main?readme=1
 MythOS always starts with the file called "START.txt", so make sure it's there!
 MythOS only ends when it is sent to "End.txt", so make sure that's also there!
 (Nothing in "End.txt" gets printed out)
+Lastly, make sure MythOS is in the directory with your text files!
 
 Modify "START.txt" with whatever you want, and link it to some
 other text files. You'll see the linker line at the bottom of
@@ -42,3 +43,8 @@ Contact us if you need more!
 
 Always make sure to end your files with the linker line! 
 (It must be surrounded by square brackets, [ and ])
+
+NEW! You can use \% to wait for the user to press enter
+in the middle of your writing. Tip: Use at the beginning of new paragraphs
+so that players can easily see the new text pop up when they press enter.
+
