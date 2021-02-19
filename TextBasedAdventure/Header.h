@@ -55,8 +55,8 @@ string readFile(string filename) { // prints out description and returns exit op
 		usleep(SLEEP_DURATION);
 #endif
 	}
+	RoomFile.close(); // this has to happen before returning!!!
 	return currentLine; // currentLine holds the exits as a string
-	RoomFile.close();
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
