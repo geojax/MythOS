@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+
 #include "Header.h"
 
 using namespace std;
@@ -11,31 +12,30 @@ int main() {
 	string exits = readFile(START_FILE_STRING); // exits as one long string, commas in between
 	string selectedExit;
 	string currentFolder = "";
-
+	string sInput = "";
+	int iInput;
 	bool gameIsRunning = true;
 
 	while (gameIsRunning)
 	{
-		string sInput = "";
-		int Input;
 
 	GetInput:
+		cout << ">";
 		cin >> sInput;
+		cin.ignore(INT_MAX, '\n');
+
 		try
 		{
-			Input = stoi(sInput);
+			iInput = stoi(sInput);
 		}
 		catch (exception e) {
 			cout << "(enter a number)\n\n";
 			goto GetInput;
 		}
-		catch (int i) {
-			cout << "(" << i << " is out of range)\n\n";
-		}
 
 		try 
 		{
-			selectedExit = getExit(exits, Input) + ".txt"; // uses the last string of exits to find the right exit
+			selectedExit = getExit(exits, iInput) + ".txt"; // uses the last string of exits to find the right exit
 		}
 		catch (int input) {
 			cout << "(your input was not an option)\n\n";
