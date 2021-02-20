@@ -1,11 +1,7 @@
 Barn
-
-The barn is pleasant. Smell of alfalfa tickles your nose.
-
+The barn is pleasant. The smell of alfalfa tickles your nose.
 Bernie rocks back and forth in his chair on the porch. He is sipping a frothing beer.
-
 Ms. Jacobson is fanning herself in the shade of the barn. She is sweating profusely in her abundant frock.
-
 Howard is pacing back and forth trying to figure out how you can escape.
 
 1) Talk to Bernie 2) Talk to Ms. Jacobson 3) Talk to Howard 4) I'm ready to escape!

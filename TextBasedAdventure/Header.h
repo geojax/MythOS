@@ -66,7 +66,6 @@ string readFile(string filename) { // prints out description and returns exit op
 				sleepIsOn = !sleepIsOn; // change status of typewriter effect being on or off
 				continue;
 			default:
-				cout << "Why are we in the default switch?";
 				break;
 			}
 		}
@@ -75,8 +74,8 @@ string readFile(string filename) { // prints out description and returns exit op
 		if (sleepIsOn) LocalSleep(SLEEP_DURATION);
 
 	}
-	return currentLine; // currentLine holds the exits as a string
 	RoomFile.close();
+	return currentLine; // currentLine holds the exits as a string
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
