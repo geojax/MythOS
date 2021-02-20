@@ -74,6 +74,7 @@ string readFile(string filename) { // prints out description and returns exit op
 		if (sleepIsOn) LocalSleep(SLEEP_DURATION);
 
 	}
+
 	RoomFile.close();
 	return currentLine; // currentLine holds the exits as a string
 }
