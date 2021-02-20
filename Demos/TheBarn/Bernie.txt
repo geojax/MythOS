@@ -1,8 +1,8 @@
-Bernie takes another sip of his beer. "How's it goin', son?" he calls out to you. You approach him with a swagger.
-
-"It's alright. How you Bernie?"
-
-"Bettr'n ever been!"
+Bernie takes another sip of his beer. He calls out to you.
+\%\t"How's it goin', son?"\%\t
+You approach him with a swagger.
+\%\t"It's alright. How you Bernie?"\t
+\%\t"Bettr'n ever been!"\t
 
 1) I'll be back, I'm gonna see how everyone else is doing.
 [START]

@@ -11,16 +11,30 @@
 #endif
 #define START_FILE_STRING "START.txt"
 #define END_FILE_STRING "End.txt"
-#define SLEEP_DURATION 0 // typewriter effect duration
+#define SLEEP_DURATION 20 // typewriter effect duration
 
 using namespace std;
 
 #define MAX_LINES_OF_DESCRIPTION 200
+
+void LocalSleep(int duration)
+{
+#ifdef _WIN32
+	Sleep(duration);
+#endif
+
+#ifdef TARGET_OS_MAC
+	usleep(duration);
+#endif
+}
+
 string readFile(string filename) { // prints out description and returns exit options 
 	cout << '\n';
+
 	string currentLine = "";
 	ifstream RoomFile(filename);
 	char myChars[2] = { RoomFile.get() };
+	bool sleepIsOn = false;
 
 	if (filename == END_FILE_STRING) {
 		return "";
@@ -40,22 +54,28 @@ string readFile(string filename) { // prints out description and returns exit op
 	}
 
 	while ((myChars[0] = RoomFile.get()) != '[') {
-		if (myChars[0] == '\\' && (myChars[0] = RoomFile.get()) == '%') // the loop just passed over a '\%'
+		if (myChars[0] == '\\')// && (myChars[0] = RoomFile.get()) == '%') // the loop just passed over a '\%'
 		{
-			cin.get(); // wait for input if line starts with '%'
-			continue;
+			myChars[0] = RoomFile.get();
+			switch (myChars[0])
+			{
+			case '%':
+				cin.get();
+				continue;
+			case 't':
+				sleepIsOn = !sleepIsOn; // change status of typewriter effect being on or off
+				continue;
+			default:
+				break;
+			}
 		}
 		myChars[1] = myChars[0];
 		cout << myChars[0];
+		if (sleepIsOn) LocalSleep(SLEEP_DURATION);
 
-#ifdef _WIN32
-		Sleep(SLEEP_DURATION);
-#endif
-#ifdef TARGET_OS_MAC
-		usleep(SLEEP_DURATION);
-#endif
 	}
-	RoomFile.close(); // this has to happen before returning!!!
+
+	RoomFile.close();
 	return currentLine; // currentLine holds the exits as a string
 }
 
