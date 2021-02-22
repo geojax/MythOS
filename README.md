@@ -1,5 +1,5 @@
 Welcome to MythOS!
-Join our Discord server! https://discord.gg/rPM6Y2ABRX
+Join our Discord server! https://discord.gg/gUVJvbYkqQ
 Our Github! https://github.com/geojax/MythOS/new/main?readme=1
 
 			How to begin
