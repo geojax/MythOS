@@ -1,7 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <climits>
-
 #include "Header.h"
 
 using namespace std;
@@ -10,12 +8,17 @@ int main() {
 
 	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
 
-	string exits = readFile(START_FILE_STRING); // exits as one long string, commas in between
-	string selectedExit;
-	string currentFolder = "";
-	string sInput = "";
-	int iInput;
 	bool gameIsRunning = true;
+
+	string exits = FindLinkerLine(START_FILE_STRING); // exits as one long string, commas in between
+
+	PrintFile(START_FILE_STRING);
+
+	string currentFile; // the file MythOS will print to console
+	string currentFolder = ""; // the folder path to be prepended to all files until PARENTFOLDER\ is added
+
+	string sInput = ""; // input variables
+	int iInput;
 
 	while (gameIsRunning)
 	{
@@ -34,37 +37,37 @@ int main() {
 			goto GetInput;
 		}
 
-		try 
+		try
 		{
-			selectedExit = getExit(exits, iInput) + ".txt"; // uses the last string of exits to find the right exit
+			currentFile = getExit(exits, iInput) + ".txt"; // uses the last string of exits to find the right exit
 		}
 		catch (int input) {
 			cout << "(your input was not an option)\n\n";
 			goto GetInput;
 		}
 
-		if (currentFolder == getFolder(selectedExit, currentFolder)) //if the current folder isn't changed
+		if (currentFolder == getFolder(currentFile, currentFolder)) //if the current folder isn't changed
 		{
-			selectedExit = currentFolder + selectedExit;
+			currentFile = currentFolder + currentFile;
 		}
-		currentFolder = getFolder(selectedExit, currentFolder);
+		currentFolder = getFolder(currentFile, currentFolder);
 
-		if (selectedExit.substr(0,12) == "PARENTFOLDER")
+		if (currentFile.substr(0, 12) == "PARENTFOLDER")
 		{
-			selectedExit = selectedExit.substr(13, selectedExit.length());
+			currentFile = currentFile.substr(13, currentFile.length());
 		}
 
-		try 
-		{ 
-			exits = readFile(selectedExit); 
+		try
+		{
+			exits = FindLinkerLine(currentFile);
 		}
 		catch (string filename) {
 			cout << "(can't find a line in " + filename + " that starts with a '[' opening bracket. Make sure the file exists and links to other files correctly.\
  for now try a different input.)";
 			goto GetInput;
 		}
-
-		if (selectedExit == "End.txt")
+		PrintFile(currentFile);
+		if (currentFile == "End.txt")
 		{
 			gameIsRunning = false;
 		}

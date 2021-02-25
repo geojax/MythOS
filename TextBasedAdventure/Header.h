@@ -28,33 +28,42 @@ void LocalSleep(int duration)
 #endif
 }
 
-string readFile(string filename) { // prints out description and returns exit options 
-	cout << '\n';
-
-	string currentLine = "";
-	ifstream RoomFile(filename);
-	char myChars[2] = { RoomFile.get() };
-	bool sleepIsOn = false;
-
+string FindLinkerLine(string filename) // make sure the file has a linker and return linker line
+{
 	if (filename == END_FILE_STRING) {
 		return "";
 	}
-	
-	// look for a bracket in the first 200 lines
+	ifstream file(filename);
+	string currentLine;
 	for (int i = 0; i <= MAX_LINES_OF_DESCRIPTION; ++i)
 	{
-		getline(RoomFile, currentLine);
+		getline(file, currentLine);
 		if (currentLine[0] == '[') {
-			RoomFile.clear();
-			RoomFile.seekg(0); 
-			break;
+			file.clear();
+			file.seekg(0);
+			return currentLine;
 		}
 		if (i == MAX_LINES_OF_DESCRIPTION)
 			throw(filename);
 	}
+}
 
-	while ((myChars[0] = RoomFile.get()) != '[') {
-		if (myChars[0] == '\\')// && (myChars[0] = RoomFile.get()) == '%') // the loop just passed over a '\%'
+void PrintFile(string filename) { // prints out description and returns exit options 
+	cout << '\n';
+
+	ifstream RoomFile(filename);
+	char myChars[2]; // stores current char and last char to check for commands like \t and \%
+	bool sleepIsOn = false;
+
+	if (filename == END_FILE_STRING) {
+		return;
+	}
+
+	while ((myChars[0] = RoomFile.get()) != EOF) { // loop thru roomfile 
+		if (myChars[1] == '\n' && myChars[0] == '[') {
+			return;
+		}
+		if (myChars[0] == '\\')
 		{
 			myChars[0] = RoomFile.get();
 			switch (myChars[0])
@@ -72,11 +81,8 @@ string readFile(string filename) { // prints out description and returns exit op
 		myChars[1] = myChars[0];
 		cout << myChars[0];
 		if (sleepIsOn) LocalSleep(SLEEP_DURATION);
-
 	}
-
 	RoomFile.close();
-	return currentLine; // currentLine holds the exits as a string
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
