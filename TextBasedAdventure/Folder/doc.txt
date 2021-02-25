@@ -1,0 +1,6 @@
+This is a secret file.
+
+1) go to unsecret file
+2) end
+
+[PARENTFOLDER\Text,PARENTFOLDER\End]
