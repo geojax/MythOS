@@ -1,13 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include "Header.h"
-
+#include "Variable.h"
 using namespace std;
 
 int main() {
 
 	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
-
+	cout << GetVariable("joma");
 	bool gameIsRunning = true;
 
 	string exits = FindLinkerLine(START_FILE_STRING); // exits as one long string, commas in between
