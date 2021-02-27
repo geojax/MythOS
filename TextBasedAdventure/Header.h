@@ -55,7 +55,6 @@ string SkipToNextStar(ifstream& file, int& lineNumber)
 	getline(file, currentLine);
 	for (; lineNumber < MAX_LINES_OF_DESCRIPTION && currentLine[0] != '*'; ++lineNumber)
 		getline(file, currentLine);
-	getline(file, currentLine);
 	return currentLine;
 }
 
@@ -75,8 +74,8 @@ void PrintFile(string filename, ifstream &variableFile) { // prints out descript
 		if (currentLine[0] == '[') {
 			return;
 		}
-		else if (currentLine[0] == '*' && isalpha(currentLine[1])) {
-			if (!GetValueFromFile(currentLine.substr(1, currentLine.length()), VARIABLES_PATH)) // if the var does store 0, thus the VAR is set to false
+		else if (currentLine[0] == '*') {
+			if (isalpha(currentLine[1]) && !GetValueFromFile(currentLine.substr(1, currentLine.length()), VARIABLES_PATH)) // if the var does store 0, thus the VAR is set to false
 			{
 				currentLine = SkipToNextStar(file, lineNumber);
 			}

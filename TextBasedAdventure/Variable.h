@@ -20,8 +20,6 @@ bool isnumber(string str)
 
 int GetValueFromFile(string key, string filename, char divider = '=') // default filename to VARIABLES_PATH!!!
 {
-	/*file.clear();
-	file.seekg(0, ios::beg);*/ // go to beginning of file
 	ifstream file(filename);
 	string currentLine;
 	for (int i = 0; i < MAX_VARIABLES; ++i)

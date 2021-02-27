@@ -1,4 +1,4 @@
-{Secret=0}
+{Secret=1}
 StartingRoom
 
 This is where you start.

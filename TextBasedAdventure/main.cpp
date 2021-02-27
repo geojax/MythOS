@@ -72,8 +72,6 @@ int main() {
 		{
 			gameIsRunning = false;
 		}
-		variablesFile.clear();
-		variablesFile.seekg(0, ios::beg);
 	}
 	return 0;
 }

@@ -1,0 +1,4 @@
+{Papyrus=0}
+{Undyne=0}
+1)begin
+[Papyrus]

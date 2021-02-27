@@ -1,4 +1,3 @@
-{Secret=0}
 This is the middle of the story.
 \%I used a percentage sign there. that requires you to press enter to see this line.
 \%And again!

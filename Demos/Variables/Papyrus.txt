@@ -1,0 +1,4 @@
+Do you date Papyrus?
+1)yes 2)no
+
+[UndynePapyrusYes,Undyne]

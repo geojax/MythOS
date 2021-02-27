@@ -1,0 +1,11 @@
+{Undyne=1}
+*Papyrus
+You dated Papyrus!
+*
+*Undyne
+You dated Undyne
+*
+You happy now?
+
+1)end
+[End]
