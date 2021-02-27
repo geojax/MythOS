@@ -9,6 +9,11 @@ Oops I cut myself off!
 \tNow Watch this! I'm typing! TYPITY TYPE TYPE T\tYPE TYPE TYPE--\%
 Oh oops. I stopped typing.
 \tAHHHH MUCH BETTTTERRERRRR!!!!!!!\t
+
+*Secret
+You are looking at a secret text!
+*
+
 1)End
 
 [End]

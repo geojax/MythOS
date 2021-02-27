@@ -1,24 +1,25 @@
 #pragma once
 #define VARIABLES_PATH "data/variables.txt"
+#define MAX_VARIABLES 100
 #include <fstream>
 #include <string>
 #include "Header.h"
 using namespace std;
 
-int GetVariable(string variable)
+int GetValueFromFile(string key, ifstream& file, char divider = '=')
 {
-	ifstream variablesFile(VARIABLES_PATH);
+	file.seekg(0); // go to beginning of file
 	string currentLine;
-	for (int i = 1; i < 100; ++i)
+	for (int i = 1; i < MAX_VARIABLES; ++i)
 	{
-		getline(variablesFile, currentLine);
-		if (currentLine.substr(0, variable.length()) == variable)
+		getline(file, currentLine);
+		if (currentLine.substr(0, key.length()) == key)
 		{
-			string returnString = currentLine.substr(currentLine.find('=') + 1, currentLine.length());
-			if (isnumber(returnString)) 
+			string returnString = currentLine.substr(currentLine.find(divider) + 1, currentLine.length());
+			if (isnumber(returnString))
 			{
-				variablesFile.close();
-				return stoi(currentLine.substr(currentLine.find('=') + 1, currentLine.length()));
+				file.close();
+				return stoi(currentLine.substr(currentLine.find(divider) + 1, currentLine.length()));
 			}
 		}
 	}

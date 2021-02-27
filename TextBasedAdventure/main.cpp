@@ -7,7 +7,9 @@ using namespace std;
 int main() {
 
 	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
-	cout << GetVariable("joma");
+
+	ifstream variablesFile(VARIABLES_PATH);
+
 	bool gameIsRunning = true;
 
 	string exits = FindLinkerLine(START_FILE_STRING); // exits as one long string, commas in between

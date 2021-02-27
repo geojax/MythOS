@@ -15,7 +15,7 @@
 
 using namespace std;
 
-#define MAX_LINES_OF_DESCRIPTION 200
+#define MAX_LINES_OF_DESCRIPTION 1000 // 1000 lines is now the max
 
 void LocalSleep(int duration)
 {
@@ -58,7 +58,7 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 	if (filename == END_FILE_STRING) {
 		return;
 	}
-
+	int lineNumber = 0;
 	while ((myChars[0] = RoomFile.get()) != EOF) { // loop thru roomfile 
 		if (myChars[1] == '\n' && myChars[0] == '[') {
 			return;
@@ -77,6 +77,10 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 			default:
 				break;
 			}
+		}
+		if (myChars[0] == '\n')
+		{
+			++lineNumber;
 		}
 		myChars[1] = myChars[0];
 		cout << myChars[0];
@@ -142,4 +146,19 @@ bool isnumber(string str)
 			return false;
 	}
 	return true;
+}
+
+int FindLabel(ifstream &file, string label, int lineNumber) // skips to line after label's line
+{
+	string currentLine;
+
+	for (; lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber)
+	{
+		getline(file, currentLine);
+		if (currentLine[0] == '*' && currentLine.substr(1, label.length() + 1) == label)
+		{
+			return 1;
+		}
+	}
+	return 0; // couldn't find the label
 }
