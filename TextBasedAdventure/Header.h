@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Variable.h"
 #ifdef _WIN32
 	#include "windows.h"
 #endif
@@ -15,7 +16,7 @@
 
 using namespace std;
 
-#define MAX_LINES_OF_DESCRIPTION 1000 // 1000 lines is now the max
+#define MAX_LINES_OF_DESCRIPTION 1000 // 1000 lines is the max
 
 void LocalSleep(int duration)
 {
@@ -48,22 +49,45 @@ string FindLinkerLine(string filename) // make sure the file has a linker and re
 	}
 }
 
-void PrintFile(string filename) { // prints out description and returns exit options 
-	cout << '\n';
-
-	ifstream RoomFile(filename);
+string SkipToNextStar(ifstream& file, int& lineNumber)
+{
 	string currentLine;
-	char myChars[2]; // stores current char and last char to check for commands like \t and \%
+	getline(file, currentLine);
+	for (; lineNumber < MAX_LINES_OF_DESCRIPTION && currentLine[0] != '*'; ++lineNumber)
+		getline(file, currentLine);
+	getline(file, currentLine);
+	return currentLine;
+}
+
+void PrintFile(string filename, ifstream &variableFile) { // prints out description and returns exit options 
+	cout << '\n';
+	
+	ifstream file(filename);
+	string currentLine;
 	bool sleepIsOn = false;
 
 	if (filename == END_FILE_STRING) {
 		return;
 	}
 	int lineNumber = 0;
-	for (;lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) { // loop thru roomfile 
-		getline(RoomFile, currentLine);
+	for (;lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) {
+		getline(file, currentLine);
 		if (currentLine[0] == '[') {
 			return;
+		}
+		else if (currentLine[0] == '*' && isalpha(currentLine[1])) {
+			if (!GetValueFromFile(currentLine.substr(1, currentLine.length()), VARIABLES_PATH)) // if the var does store 0, thus the VAR is set to false
+			{
+				currentLine = SkipToNextStar(file, lineNumber);
+			}
+			continue;
+		}
+		else if (currentLine[0] == '{')
+		{
+			string variable = currentLine.substr(1, currentLine.find('=') - 1);
+			int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
+			writeToFile(lineNo, currentLine.substr(1, currentLine.find('}') - 1));
+			continue;
 		}
 		for (int i = 0; i < currentLine.length(); ++i) {
 			if (currentLine[i] == '\\')
@@ -85,7 +109,7 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 		}
 		cout << '\n';
 	}
-	RoomFile.close();
+	file.close();
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
@@ -135,14 +159,4 @@ string getFolder(string& selectedExit, string currentfolder)
 		}
 	}
 	return foldername;
-}
-
-bool isnumber(string str)
-{
-	for (int i = 0; i < str.length(); ++i)
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return false;
-	}
-	return true;
 }

@@ -1,6 +1,16 @@
+{Secret=0}
 StartingRoom
 
 This is where you start.
+
+*Secret
+THIS IS SECRET
+
+
+
+
+gaboo
+*
 
 1) Middle 2) Middle 
 

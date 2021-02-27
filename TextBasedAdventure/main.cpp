@@ -11,10 +11,9 @@ int main() {
 	ifstream variablesFile(VARIABLES_PATH);
 
 	bool gameIsRunning = true;
-
 	string exits = FindLinkerLine(START_FILE_STRING); // exits as one long string, commas in between
 
-	PrintFile(START_FILE_STRING);
+	PrintFile(START_FILE_STRING, variablesFile);
 
 	string currentFile; // the file MythOS will print to console
 	string currentFolder = ""; // the folder path to be prepended to all files until PARENTFOLDER\ is added
@@ -68,11 +67,13 @@ int main() {
  for now try a different input.)";
 			goto GetInput;
 		}
-		PrintFile(currentFile);
+		PrintFile(currentFile, variablesFile);
 		if (currentFile == "End.txt")
 		{
 			gameIsRunning = false;
 		}
+		variablesFile.clear();
+		variablesFile.seekg(0, ios::beg);
 	}
 	return 0;
 }

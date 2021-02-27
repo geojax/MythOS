@@ -1,3 +1,4 @@
+{Secret=0}
 This is the middle of the story.
 \%I used a percentage sign there. that requires you to press enter to see this line.
 \%And again!
@@ -15,5 +16,5 @@ You are looking at a secret text!
 *
 
 1)End
-
+1)end
 [End]
