@@ -52,6 +52,7 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 	cout << '\n';
 
 	ifstream RoomFile(filename);
+	string currentLine;
 	char myChars[2]; // stores current char and last char to check for commands like \t and \%
 	bool sleepIsOn = false;
 
@@ -59,32 +60,30 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 		return;
 	}
 	int lineNumber = 0;
-	while ((myChars[0] = RoomFile.get()) != EOF) { // loop thru roomfile 
-		if (myChars[1] == '\n' && myChars[0] == '[') {
+	for (;lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) { // loop thru roomfile 
+		getline(RoomFile, currentLine);
+		if (currentLine[0] == '[') {
 			return;
 		}
-		if (myChars[0] == '\\')
-		{
-			myChars[0] = RoomFile.get();
-			switch (myChars[0])
+		for (int i = 0; i < currentLine.length(); ++i) {
+			if (currentLine[i] == '\\')
 			{
-			case '%':
-				cin.get();
-				continue;
-			case 't':
-				sleepIsOn = !sleepIsOn; // change status of typewriter effect being on or off
-				continue;
-			default:
-				break;
+				switch (currentLine[++i])
+				{
+				case '%':
+					cin.get();
+					continue;
+				case 't':
+					sleepIsOn = !sleepIsOn; // toggle typing
+					continue;
+				default:
+					break;
+				}
 			}
+			cout << currentLine[i];
+			if (sleepIsOn) LocalSleep(SLEEP_DURATION);
 		}
-		if (myChars[0] == '\n')
-		{
-			++lineNumber;
-		}
-		myChars[1] = myChars[0];
-		cout << myChars[0];
-		if (sleepIsOn) LocalSleep(SLEEP_DURATION);
+		cout << '\n';
 	}
 	RoomFile.close();
 }
@@ -146,19 +145,4 @@ bool isnumber(string str)
 			return false;
 	}
 	return true;
-}
-
-int FindLabel(ifstream &file, string label, int lineNumber) // skips to line after label's line
-{
-	string currentLine;
-
-	for (; lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber)
-	{
-		getline(file, currentLine);
-		if (currentLine[0] == '*' && currentLine.substr(1, label.length() + 1) == label)
-		{
-			return 1;
-		}
-	}
-	return 0; // couldn't find the label
 }
