@@ -21,6 +21,8 @@ int main() {
 	string sInput = ""; // input variables
 	int iInput;
 
+	//resetVariables();
+
 	while (gameIsRunning)
 	{
 

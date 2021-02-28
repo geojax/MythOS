@@ -77,4 +77,21 @@ bool writeToFile(unsigned lineNo, string toWrite, string filename = VARIABLES_PA
 	return true;
 }
 
+//void resetVariables(string filename = VARIABLES_PATH)
+//{
+//	std::fstream file(filename);
+//	string currentVariable, toWrite;
+//
+//	for (int currentLine = 0; currentLine < MAX_VARIABLES; currentLine++)
+//	{
+//		getline(file, currentVariable);
+//		for (int n = 0; currentVariable[n] != '='; ++n)
+//		{
+//			toWrite += currentVariable[n];
+//
+//			file.seekp(file.tellg());
+//			file << toWrite;
+//	}
+//}
+
 

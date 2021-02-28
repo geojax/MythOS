@@ -81,13 +81,13 @@ void PrintFile(string filename, ifstream &variableFile) { // prints out descript
 			}
 			continue;
 		}
-		else if (currentLine[0] == '{')
-		{
-			string variable = currentLine.substr(1, currentLine.find('=') - 1);
-			int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
-			writeToFile(lineNo, currentLine.substr(1, currentLine.find('}') - 1));
-			continue;
-		}
+		//else if (currentLine[0] == '{')
+		//{
+		//	string variable = currentLine.substr(1, currentLine.find('=') - 1);
+		//	int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
+		//	writeToFile(lineNo, currentLine.substr(1, currentLine.find('}') - 1));
+		//	continue;
+		//}
 		for (int i = 0; i < currentLine.length(); ++i) {
 			if (currentLine[i] == '\\')
 			{
@@ -128,11 +128,29 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 
 		if (input == 0)
 		{
+			for (int i = 1; selectedExit[i] != '}'; ++i)
+			{
+				if (selectedExit[i] == '{')
+				{
+					string variable = selectedExit.substr(i + 1, selectedExit.find('}') - (i + 1));
+
+					selectedExit = selectedExit.substr(0, i);
+
+					int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.tx
+					writeToFile(lineNo, variable += "=1");
+					break;
+				}
+				if (i == selectedExit.length())
+				{
+					return selectedExit;
+				}
+			}
 			return selectedExit;
 		}
 		
 		selectedExit += exits[i];
 	}
+
 	if (input != 1)
 		throw(input); // otherwise throw error that input was out of range
 	return selectedExit;
