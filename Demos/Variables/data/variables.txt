@@ -1,2 +1,2 @@
-Papyrus=0
+Papyrus=1
 Undyne=1

@@ -2,9 +2,16 @@
 *Papyrus
 You dated Papyrus!
 *
+
 *Undyne
 You dated Undyne
 *
+
+*Papyrus
+*Undyne
+You dated everyone!
+*
+
 You happy now?
 
 1)end

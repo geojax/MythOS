@@ -1,7 +1,8 @@
 StartingRoom
+{Secret=0}
 
 This is where you start.
 
 1) Middle 2) Middle 
 
-[Text{Secret},Folder\doc]
+[Text,Text{Secret},Text{Secret}]

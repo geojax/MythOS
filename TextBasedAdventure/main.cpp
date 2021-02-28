@@ -8,12 +8,10 @@ int main() {
 
 	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
 
-	ifstream variablesFile(VARIABLES_PATH);
-
 	bool gameIsRunning = true;
 	string exits = FindLinkerLine(START_FILE_STRING); // exits as one long string, commas in between
 
-	PrintFile(START_FILE_STRING, variablesFile);
+	PrintFile(START_FILE_STRING);
 
 	string currentFile; // the file MythOS will print to console
 	string currentFolder = ""; // the folder path to be prepended to all files until PARENTFOLDER\ is added
@@ -69,7 +67,7 @@ int main() {
  for now try a different input.)";
 			goto GetInput;
 		}
-		PrintFile(currentFile, variablesFile);
+		PrintFile(currentFile);
 		if (currentFile == "End.txt")
 		{
 			gameIsRunning = false;

@@ -1,2 +1,2 @@
 joma=24
-Secret=1
+Secret=0

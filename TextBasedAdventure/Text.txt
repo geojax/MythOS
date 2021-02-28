@@ -15,5 +15,5 @@ You are looking at a secret text!
 *
 
 1)End
-1)end
-[End]
+2)back to start
+[End,START]

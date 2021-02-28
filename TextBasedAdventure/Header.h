@@ -58,7 +58,7 @@ string SkipToNextStar(ifstream& file, int& lineNumber)
 	return currentLine;
 }
 
-void PrintFile(string filename, ifstream &variableFile) { // prints out description and returns exit options 
+void PrintFile(string filename) { // prints out description and returns exit options 
 	cout << '\n';
 	
 	ifstream file(filename);
@@ -81,13 +81,13 @@ void PrintFile(string filename, ifstream &variableFile) { // prints out descript
 			}
 			continue;
 		}
-		//else if (currentLine[0] == '{')
-		//{
-		//	string variable = currentLine.substr(1, currentLine.find('=') - 1);
-		//	int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
-		//	writeToFile(lineNo, currentLine.substr(1, currentLine.find('}') - 1));
-		//	continue;
-		//}
+		else if (currentLine[0] == '{')
+		{
+			string variable = currentLine.substr(1, currentLine.find('=') - 1);
+			int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
+			writeToFile(lineNo, currentLine.substr(1, currentLine.find('}') - 1));
+			continue;
+		}
 		for (int i = 0; i < currentLine.length(); ++i) {
 			if (currentLine[i] == '\\')
 			{
@@ -117,8 +117,8 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 	if (input <= 0)
 		throw (input);
 	string selectedExit = "";
-	for (int i = 1; exits[i] != ']'; ++i) {
-		if (exits[i] == ',')
+	for (int i = 1; exits[i] != EOF; ++i) {
+		if (exits[i] == ',' || exits[i] == ']')
 		{
 			--input;
 			++i;
@@ -136,8 +136,8 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 
 					selectedExit = selectedExit.substr(0, i);
 
-					int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.tx
-					writeToFile(lineNo, variable += "=1");
+					int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
+					writeToFile(lineNo, variable += "=1"); // Set the variable to true
 					break;
 				}
 				if (i == selectedExit.length())

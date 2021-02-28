@@ -16,8 +16,6 @@ bool isnumber(string str)
 	return true;
 }
 
-// make a void FindLineThatStartsWith(string str)
-
 int GetValueFromFile(string key, string filename, char divider = '=') // default filename to VARIABLES_PATH!!!
 {
 	ifstream file(filename);
