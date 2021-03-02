@@ -44,7 +44,7 @@ Contact us if you need more!
 Always make sure to end your files with the linker line! 
 (It must be surrounded by square brackets, [ and ])
 
-NEW! You can use \% to wait for the user to press enter
+NEW! You can use \% (that is forward-slash + percent sign, in markdown looks like \\%) to wait for the user to press enter
 in the middle of your writing. Tip: Use at the beginning of new paragraphs
 so that players can easily see the new text pop up when they press enter.
 
