@@ -113,24 +113,9 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 	return selectedExit;
 }
 
-string getFolder(string& selectedExit, string currentfolder)
+string getFolder(string& selectedExit)
 {
-	string foldername = currentfolder;
-	for (int i = selectedExit.length() - 1; i >= 0; --i)
-	{
-		if (selectedExit[i] == '\\')
-		{
-			foldername = "";
-			for (int n = 0; n < i + 1; ++n)
-			{
-				foldername += selectedExit[n];
-				if (foldername == "PARENTFOLDER")
-				{
-					foldername = "";
-					++n;
-				}
-			}
-		}
-	}
+	string foldername;// = currentfolder;
+	foldername = selectedExit.substr(0, selectedExit.find_last_of('\\') + 1);
 	return foldername;
 }

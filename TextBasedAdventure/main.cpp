@@ -20,7 +20,7 @@ int main() {
 	string sInput = ""; // input variables
 	int iInput;
 
-	while (gameIsRunning)
+	while (currentFile != END_FILE_STRING)
 	{
 
 	GetInput:
@@ -39,38 +39,32 @@ int main() {
 
 		try
 		{
-			currentFile = getExit(exits, iInput) + ".txt"; // uses the last string of exits to find the right exit
+			string exit = getExit(exits, iInput); // contains entire path if it's there
+			currentFile = exit.substr(exit.find_last_of('\\') + 1) + ".txt"; // uses the last string of exits to find the right exit
+			string getFolderResult = getFolder(exit);
+			if (getFolderResult.substr(0, 12) == "PARENTFOLDER")
+			{
+				currentFolder = getFolderResult.substr(13);
+
+			}
+			else {
+				currentFolder += getFolderResult;
+			}
 		}
 		catch (int input) {
 			cout << "(your input was not an option)\n\n";
 			goto GetInput;
 		}
-
-		if (currentFolder == getFolder(currentFile, currentFolder)) //if the current folder isn't changed
-		{
-			currentFile = currentFolder + currentFile;
-		}
-		currentFolder = getFolder(currentFile, currentFolder);
-
-		if (currentFile.substr(0, 12) == "PARENTFOLDER")
-		{
-			currentFile = currentFile.substr(13, currentFile.length());
-		}
-
 		try
 		{
-			exits = FindLinkerLine(currentFile);
+			exits = FindLinkerLine(currentFolder + currentFile);
 		}
 		catch (string filename) {
 			cout << "(can't find a line in " + filename + " that starts with a '[' opening bracket. Make sure the file exists and links to other files correctly.\
  for now try a different input.)";
 			goto GetInput;
 		}
-		PrintFile(currentFile);
-		if (currentFile == "End.txt")
-		{
-			gameIsRunning = false;
-		}
+		PrintFile(currentFolder + currentFile);
 	}
 	return 0;
 }
