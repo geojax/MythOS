@@ -1,7 +1,4 @@
-StartingRoom
-
-This is where you start.
-
-1) Middle 2) Middle 
-
-[Text,Folder\doc]
+Starting room
+this is where you start
+1 to go to text
+[Text]

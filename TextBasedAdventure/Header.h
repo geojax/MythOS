@@ -52,38 +52,40 @@ string FindLinkerLine(string filename) // make sure the file has a linker and re
 void PrintFile(string filename) { // prints out description and returns exit options 
 	cout << '\n';
 
-	ifstream RoomFile(filename);
-	char myChars[2]; // stores current char and last char to check for commands like \t and \%
+	ifstream file(filename);
+	string currentLine;
 	bool sleepIsOn = false;
 
 	if (filename == END_FILE_STRING) {
 		return;
 	}
-
-	while ((myChars[0] = RoomFile.get()) != EOF) { // loop thru roomfile 
-		if (myChars[1] == '\n' && myChars[0] == '[') {
+	int lineNumber = 0;
+	for (; lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) {
+		getline(file, currentLine);
+		if (currentLine[0] == '[') {
 			return;
 		}
-		if (myChars[0] == '\\')
-		{
-			myChars[0] = RoomFile.get();
-			switch (myChars[0])
+		for (int i = 0; i < currentLine.length(); ++i) {
+			if (currentLine[i] == '\\')
 			{
-			case '%':
-				cin.get();
-				continue;
-			case 't':
-				sleepIsOn = !sleepIsOn; // change status of typewriter effect being on or off
-				continue;
-			default:
-				break;
+				switch (currentLine[++i])
+				{
+				case '%':
+					cin.get();
+					continue;
+				case 't':
+					sleepIsOn = !sleepIsOn; // toggle typing
+					continue;
+				default:
+					break;
+				}
 			}
+			cout << currentLine[i];
+			if (sleepIsOn) LocalSleep(SLEEP_DURATION);
 		}
-		myChars[1] = myChars[0];
-		cout << myChars[0];
-		if (sleepIsOn) LocalSleep(SLEEP_DURATION);
+		cout << '\n';
 	}
-	RoomFile.close();
+	file.close();
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
