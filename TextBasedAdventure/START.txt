@@ -1,4 +1,12 @@
-Starting room
-this is where you start
-1 to go to text
-[Text]
+THIS IS THE START FILE
+I WILLL NOW SET JOMA TO 1
+{joma=1}
+*joma
+You will OOONLY see this if joma is true!
+Now have some cereal!
+{GotCereal=0}
+*
+*GotCereal
+You only see this part if you had cereal!
+*
+[Text{GotCereal}]

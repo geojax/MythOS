@@ -23,9 +23,12 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="START.txt" />
     <Text Include="Text.txt" />
+    <Text Include="START.txt" />
   </ItemGroup>
 </Project>

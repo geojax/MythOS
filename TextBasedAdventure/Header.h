@@ -3,7 +3,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Variable.h"
 #include <climits>
+
 #ifdef _WIN32
 	#include "windows.h"
 #endif
@@ -16,7 +18,7 @@
 
 using namespace std;
 
-#define MAX_LINES_OF_DESCRIPTION 200
+#define MAX_LINES_OF_DESCRIPTION 1000 // 1000 lines is the max
 
 void LocalSleep(int duration)
 {
@@ -49,7 +51,16 @@ string FindLinkerLine(string filename) // make sure the file has a linker and re
 	}
 }
 
-void PrintFile(string filename) { // prints out description and returns exit options 
+string SkipToNextStar(ifstream& file, int& lineNumber)
+{
+	string currentLine;
+	getline(file, currentLine);
+	for (; lineNumber < MAX_LINES_OF_DESCRIPTION && currentLine[0] != '*'; ++lineNumber)
+		getline(file, currentLine);
+	return currentLine;
+}
+
+void PrintFile(string filename, string* variables) { // prints out description and returns exit options 
 	cout << '\n';
 
 	ifstream file(filename);
@@ -60,10 +71,29 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 		return;
 	}
 	int lineNumber = 0;
+
 	for (; lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) {
+
 		getline(file, currentLine);
 		if (currentLine[0] == '[') {
 			return;
+		}
+		else if (currentLine[0] == '*') {
+			if (isalpha(currentLine[1]) && GetVariable(variables, currentLine.substr(currentLine.find('=') + 1)) == 0) // if var is false
+			{
+				currentLine = SkipToNextStar(file, lineNumber);
+			}
+			continue;
+		}
+		else if (currentLine[0] == '{')
+		{
+			string variable = currentLine.substr(1, currentLine.find('=') - 1);
+			string value = currentLine.substr(currentLine.find('=') + 1, currentLine.find('}') - currentLine.find('=') - 1);
+			SetVariable(variables, variable, value);
+			if (!isnumber(value))
+				cout << "(variable " + variable + " is not being assigned an integer value. check line" << lineNumber+1 << ")";
+
+			continue;
 		}
 		for (int i = 0; i < currentLine.length(); ++i) {
 			if (currentLine[i] == '\\')
@@ -90,12 +120,12 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 
 /* Cycle through exits string, look for one less comma than user's input*/
 
-string getExit(string exits, int input) { /* get exit from string of exits */
+string getExit(string exits, int input, string* variables) { /* get exit from string of exits */
 	if (input <= 0)
 		throw (input);
 	string selectedExit = "";
-	for (int i = 1; exits[i] != ']'; ++i) {
-		if (exits[i] == ',')
+	for (int i = 1; exits[i] != EOF; ++i) {
+		if (exits[i] == ',' || exits[i] == ']')
 		{
 			--input;
 			++i;
@@ -103,13 +133,30 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 				selectedExit = "";
 		}
 
-		if (input == 0)
+		if (input == 0) // this is all in a single selected exit
 		{
+			for (int i = 1; selectedExit[i] != '}'; ++i)
+			{
+				if (selectedExit[i] == '{')
+				{
+					string variable = selectedExit.substr(i + 1, selectedExit.find('}') - (i + 1));
+
+					selectedExit = selectedExit.substr(0, i);
+
+					SetVariable(variables, variable, "1");
+					break;
+				}
+				if (i == selectedExit.length())
+				{
+					return selectedExit;
+				}
+			}
 			return selectedExit;
 		}
 		
 		selectedExit += exits[i];
 	}
+
 	if (input != 1)
 		throw(input); // otherwise throw error that input was out of range
 	return selectedExit;

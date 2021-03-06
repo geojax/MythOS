@@ -1,0 +1,2 @@
+Papyrus=1
+Undyne=1
