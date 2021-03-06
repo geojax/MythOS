@@ -58,7 +58,7 @@ string SkipToNextStar(ifstream& file, int& lineNumber)
 	return currentLine;
 }
 
-void PrintFile(string filename) { // prints out description and returns exit options 
+void PrintFile(string filename, string* variables) { // prints out description and returns exit options 
 	cout << '\n';
 	
 	ifstream file(filename);
@@ -75,7 +75,7 @@ void PrintFile(string filename) { // prints out description and returns exit opt
 			return;
 		}
 		else if (currentLine[0] == '*') {
-			if (isalpha(currentLine[1]) && !GetValueFromFile(currentLine.substr(1, currentLine.length()), VARIABLES_PATH)) // if the var does store 0, thus the VAR is set to false
+			if (isalpha(currentLine[1]) && GetVariable(variables, currentLine.substr(currentLine.find('=') + 1)) == 0) // if var is false
 			{
 				currentLine = SkipToNextStar(file, lineNumber);
 			}
@@ -126,18 +126,18 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 				selectedExit = "";
 		}
 
-		if (input == 0)
+		if (input == 0) // this is all in a single selected exit
 		{
 			for (int i = 1; selectedExit[i] != '}'; ++i)
 			{
 				if (selectedExit[i] == '{')
 				{
-					string variable = selectedExit.substr(i + 1, selectedExit.find('}') - (i + 1));
+					string variable = selectedExit.substr(i + 1, selectedExit.find('}') - (i + 1)); // takeoff{GotChili}
 
 					selectedExit = selectedExit.substr(0, i);
 
 					int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
-					writeToFile(lineNo, variable += "=1"); // Set the variable to true
+					writeToFile(lineNo, variable + "=1"); // Set the variable to true
 					break;
 				}
 				if (i == selectedExit.length())

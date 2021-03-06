@@ -1,8 +1,9 @@
-StartingRoom
-{Secret=0}
+\t--------------------------------------\t
+\%The space station sits alone in space, drifting drifting slowly through nothingness. The lights are on within the shop. 
+You adjust the ship's velocity to a perfection of which only you are capable so that your landing exerts minimal force on the space station. You set down immediately next to the shop in the empty parking lot and lower your ramp for the Captain. He lets out an indulgent yawn, stretching his arms out as wide as he humanly can, and steps off the ship slowly. 
 
-This is where you start.
+1) "The enforcers are near. We don't have time for chili."
+2) "You must eat more than just chili. We will only arrive at the next station in 3 days. "
+3) "We are low on money, Captain. Do what you must to retrieve some money."
 
-1) Middle 2) Middle 
-
-[Text,Text{Secret},Text{Secret}]
+[quick_meal1{GotCereal},long_meal{GotChili},robbery1]

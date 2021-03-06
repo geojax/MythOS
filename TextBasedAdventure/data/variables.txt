@@ -1,2 +1,3 @@
 joma=24
+GotCereal=1
 Secret=0

@@ -1,0 +1,8 @@
+\t"Never mind the chili, ma'am. I'll just have a bowl of cereal and be on my way."
+\%\tThe woman pours a bowl of cheerios and milk for the Captain. He eats fast. He is preparing to ask if she might join him on his journey.
+\%\t"Gets pretty lonely out there, sometimes, on my own. I haven't settled down for a good while now..."\t
+\%1) "Captain, enforcers are near. We must head out."
+2) "Captain, we cannot accept any more passengers."
+3) "Captain, she has witnessed you. Kill her."
+
+[takeoff,takeoff,robbery1]

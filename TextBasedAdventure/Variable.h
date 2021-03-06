@@ -52,6 +52,60 @@ int FindLineNumStartsWith(string str, int max_lines = MAX_VARIABLES, string file
 	return -1;
 }
 
+bool FileToStrArray(string filename, string* writeTo)
+{
+	int c; // current character of file
+	int i = 0; // index of variables array
+	ifstream file(filename);
+
+	if (!file)
+		return false;
+
+	while ((c = file.get()) != EOF && i < MAX_VARIABLES) // end when end of file is reached or we've gone to max variables
+	{
+		if (c == '\n') 
+		{
+			++i; // go to the next index of the array on newlines
+			continue; // don't include \n in the array
+		}
+
+		writeTo[i] += c;
+	}
+	return true;
+}
+
+bool startswith(string str, string str2)
+{
+	if (str.length() > str2.length()) // check length first to avoid substr out of range
+		return false;
+
+	return str.substr(0, str.length()) == str.substr(0, str.length());
+}
+
+void SetVariable(string* variables, string var, int val) 
+{
+	for (int i = 0; i < MAX_VARIABLES; ++i)
+	{
+		if (startswith(variables[i], var)) 
+			variables[i] = variables[i].substr(0, var.length()) + "=" + to_string(val);
+	}
+}
+
+int GetVariable(string* variables, string var)
+{
+	for (int i = 0; i < MAX_VARIABLES; ++i)
+	{
+		string currentLine = variables[i];
+		if (startswith(currentLine, var))
+		{
+			if (isnumber(currentLine.substr(currentLine.find('=') + 1)))
+				return stoi(currentLine.substr(currentLine.find('=') + 1));
+			return -1;
+		}
+	}
+	return -1;
+}
+
 // Thanks to cire on cplusplus.com in a 9-year-old post
 bool writeToFile(unsigned lineNo, string toWrite, string filename = VARIABLES_PATH)
 {
