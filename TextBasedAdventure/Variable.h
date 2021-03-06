@@ -82,12 +82,12 @@ bool startswith(string str, string str2)
 	return str.substr(0, str.length()) == str.substr(0, str.length());
 }
 
-void SetVariable(string* variables, string var, int val) 
+void SetVariable(string* variables, string var, string val) 
 {
 	for (int i = 0; i < MAX_VARIABLES; ++i)
 	{
 		if (startswith(variables[i], var)) 
-			variables[i] = variables[i].substr(0, var.length()) + "=" + to_string(val);
+			variables[i] = variables[i].substr(0, var.length()) + "=" + val;
 	}
 }
 

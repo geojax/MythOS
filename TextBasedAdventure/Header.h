@@ -84,8 +84,11 @@ void PrintFile(string filename, string* variables) { // prints out description a
 		else if (currentLine[0] == '{')
 		{
 			string variable = currentLine.substr(1, currentLine.find('=') - 1);
-			int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
-			writeToFile(lineNo, currentLine.substr(1, currentLine.find('}') - 1));
+			string value = currentLine.substr(currentLine.find('=') + 1, currentLine.find('}') - currentLine.find('=') - 1);
+			SetVariable(variables, variable, value);
+			if (!isnumber(value))
+				cout << "(variable " + variable + " is not being assigned an integer value. check line" << lineNumber+1 << ")";
+
 			continue;
 		}
 		for (int i = 0; i < currentLine.length(); ++i) {
@@ -113,7 +116,7 @@ void PrintFile(string filename, string* variables) { // prints out description a
 
 /* Cycle through exits string, look for one less comma than user's input*/
 
-string getExit(string exits, int input) { /* get exit from string of exits */
+string getExit(string exits, int input, string* variables) { /* get exit from string of exits */
 	if (input <= 0)
 		throw (input);
 	string selectedExit = "";
@@ -132,12 +135,11 @@ string getExit(string exits, int input) { /* get exit from string of exits */
 			{
 				if (selectedExit[i] == '{')
 				{
-					string variable = selectedExit.substr(i + 1, selectedExit.find('}') - (i + 1)); // takeoff{GotChili}
+					string variable = selectedExit.substr(i + 1, selectedExit.find('}') - (i + 1));
 
 					selectedExit = selectedExit.substr(0, i);
 
-					int lineNo = FindLineNumStartsWith(variable); // find the variable's line in variables.txt
-					writeToFile(lineNo, variable + "=1"); // Set the variable to true
+					SetVariable(variables, variable, "1");
 					break;
 				}
 				if (i == selectedExit.length())

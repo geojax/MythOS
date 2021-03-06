@@ -40,7 +40,7 @@ int main() {
 
 		try
 		{
-			currentFile = getExit(exits, iInput) + ".txt"; // uses the last string of exits to find the right exit
+			currentFile = getExit(exits, iInput, variables) + ".txt"; // uses the last string of exits to find the right exit
 		}
 		catch (int input) {
 			cout << "(your input was not an option)\n\n";

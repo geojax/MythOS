@@ -1,19 +1,6 @@
-This is the middle of the story.
-\%I used a percentage sign there. that requires you to press enter to see this line.
-\%And again!
-\%And again!
-Not here...
-\%And aga\%in!
-Oops I cut myself off!
-
-\tNow Watch this! I'm typing! TYPITY TYPE TYPE T\tYPE TYPE TYPE--\%
-Oh oops. I stopped typing.
-\tAHHHH MUCH BETTTTERRERRRR!!!!!!!\t
-
-*Secret
-You are looking at a secret text!
+*GotCereal
+You got some cereal, huh buddy?
 *
-
 1)End
 2)back to start
 [End,START]
