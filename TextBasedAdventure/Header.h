@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include "Variable.h"
+#include <climits>
+
 #ifdef _WIN32
 	#include "windows.h"
 #endif
@@ -60,7 +62,7 @@ string SkipToNextStar(ifstream& file, int& lineNumber)
 
 void PrintFile(string filename, string* variables) { // prints out description and returns exit options 
 	cout << '\n';
-	
+
 	ifstream file(filename);
 	string currentLine;
 	bool sleepIsOn = false;
@@ -69,7 +71,9 @@ void PrintFile(string filename, string* variables) { // prints out description a
 		return;
 	}
 	int lineNumber = 0;
-	for (;lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) {
+
+	for (; lineNumber < MAX_LINES_OF_DESCRIPTION; ++lineNumber) {
+
 		getline(file, currentLine);
 		if (currentLine[0] == '[') {
 			return;
@@ -158,24 +162,9 @@ string getExit(string exits, int input, string* variables) { /* get exit from st
 	return selectedExit;
 }
 
-string getFolder(string& selectedExit, string currentfolder)
+string getFolder(string& selectedExit)
 {
-	string foldername = currentfolder;
-	for (int i = selectedExit.length() - 1; i >= 0; --i)
-	{
-		if (selectedExit[i] == '\\')
-		{
-			foldername = "";
-			for (int n = 0; n < i + 1; ++n)
-			{
-				foldername += selectedExit[n];
-				if (foldername == "PARENTFOLDER")
-				{
-					foldername = "";
-					++n;
-				}
-			}
-		}
-	}
+	string foldername;// = currentfolder;
+	foldername = selectedExit.substr(0, selectedExit.find_last_of('\\') + 1);
 	return foldername;
 }
