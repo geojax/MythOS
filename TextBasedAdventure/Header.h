@@ -84,8 +84,8 @@ void PrintFile(string filename, string* variables) { // prints out description a
 			if (validline && GetVariable(variables, var) == 0) // if var is false
 			{
 				currentLine = SkipToNextStar(file, lineNumber);
-				continue;
 			}
+			continue;
 		}
 		else if (currentLine[0] == '{')
 		{
