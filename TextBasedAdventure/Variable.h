@@ -76,7 +76,7 @@ bool FileToStrArray(string filename, string* writeTo)
 
 bool startswith(string str, string str2)
 {
-	if (str.length() > str2.length()) // check length first to avoid substr out of range
+	if (str.length() < str2.length()) // check length first to avoid substr out of range
 		return false;
 
 	return str.substr(0, str.length()) == str.substr(0, str.length());

@@ -1,3 +1,5 @@
-joma=24
+VisitedGraves=0
+RobbedWoman=0
+EngineDidntStart=0
 GotCereal=1
-Secret=0
+GotChili=0

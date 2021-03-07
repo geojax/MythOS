@@ -1,0 +1,18 @@
+The captain whispers.
+\t"Terra, what do I need money for?"
+\%"Captain, you are well acquainted with the dangers of poverty. On March third last year pirates beheaded a woman aboard this ship named Addie --"
+"OKAY!
+\%Okay..."
+*GotCereal
+\%The woman packs away the cereal box. The Captain takes a few more 
+spoonfuls of his bowl. His hand shakes slightly.
+{GotCereal=0}
+*
+
+*GotChili
+\%The Captain cups the warm chili in shaky hands. You sense that he is nervous. He takes a careful spoonful and sips slowly, then chews slowly. The Captain has on multiple occasions told you that turkey chili is his "comfort food".
+*
+\%1) "We must dispense of all witnesses, Captain."
+2) Stop speaking. Let the Captain eat in peace.
+
+[robbery2,takeoff]

@@ -1,6 +1,0 @@
-*GotCereal
-You got some cereal, huh buddy?
-*
-1)End
-2)back to start
-[End,START]

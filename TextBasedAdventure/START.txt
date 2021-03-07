@@ -1,12 +1,4 @@
-THIS IS THE START FILE
-I WILLL NOW SET JOMA TO 1
-{joma=1}
-*joma
-You will OOONLY see this if joma is true!
-Now have some cereal!
-{GotCereal=0}
-*
-*GotCereal
-You only see this part if you had cereal!
-*
-[Text{GotCereal}]
+DEBUG
+1) Begin.
+2) Chpater2
+[Chapter1\campfire,robbery1]
