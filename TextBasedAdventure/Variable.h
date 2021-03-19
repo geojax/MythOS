@@ -71,6 +71,8 @@ bool FileToStrArray(string filename, string* writeTo)
 
 		writeTo[i] += c;
 	}
+	for (int i = 0; i < 4; ++i)
+		cout << writeTo[i];
 	return true;
 }
 
@@ -79,7 +81,7 @@ bool startswith(string str, string str2)
 	if (str.length() < str2.length()) // check length first to avoid substr out of range
 		return false;
 
-	return str.substr(0, str.length()) == str.substr(0, str.length());
+	return str.substr(0, str2.length()) == str2.substr(0, str.length());
 }
 
 void SetVariable(string* variables, string var, string val) 

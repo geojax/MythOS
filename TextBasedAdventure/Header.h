@@ -81,7 +81,7 @@ void PrintFile(string filename, string* variables) { // prints out description a
 		else if (currentLine[0] == '*') {
 			bool validline = currentLine.find('=') && isalpha(currentLine[1]);
 			string var = currentLine.substr(1, currentLine.find('=') - 1);
-			if (validline && GetVariable(variables, var) == 0) // if var is false
+			if (validline && GetVariable(variables, var) <= 0) // if var is false
 			{
 				currentLine = SkipToNextStar(file, lineNumber);
 			}

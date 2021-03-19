@@ -1,5 +1,5 @@
 VisitedGraves=0
 RobbedWoman=0
 EngineDidntStart=0
-GotCereal=1
+GotCereal=0
 GotChili=0
