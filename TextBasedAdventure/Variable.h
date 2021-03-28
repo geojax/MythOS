@@ -81,7 +81,7 @@ bool startswith(string str, string str2)
 	if (str.length() < str2.length()) // check length first to avoid substr out of range
 		return false;
 
-	return str.substr(0, str2.length()) == str2.substr(0, str.length());
+	return str.substr(0, str2.length()) == str2.substr(0, str2.length());
 }
 
 void SetVariable(string* variables, string var, string val) 
@@ -130,22 +130,4 @@ bool writeToFile(unsigned lineNo, string toWrite, string filename = VARIABLES_PA
 	file << toWrite;
 	return true;
 }
-
-//void resetVariables(string filename = VARIABLES_PATH)
-//{
-//	std::fstream file(filename);
-//	string currentVariable, toWrite;
-//
-//	for (int currentLine = 0; currentLine < MAX_VARIABLES; currentLine++)
-//	{
-//		getline(file, currentVariable);
-//		for (int n = 0; currentVariable[n] != '='; ++n)
-//		{
-//			toWrite += currentVariable[n];
-//
-//			file.seekp(file.tellg());
-//			file << toWrite;
-//	}
-//}
-
 
