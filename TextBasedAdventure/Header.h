@@ -20,7 +20,7 @@ using namespace std;
 
 #define MAX_LINES_OF_DESCRIPTION 1000 // 1000 lines is the max
 
-void LocalSleep(int duration)
+static void LocalSleep(int duration)
 {
 #ifdef _WIN32
 	Sleep(duration);
@@ -30,7 +30,7 @@ void LocalSleep(int duration)
 	usleep(duration);
 #endif
 }
-
+/*
 string FindLinkerLine(string filename) // make sure the file has a linker and return linker line
 {
 	if (filename == END_FILE_STRING) {
@@ -52,8 +52,9 @@ string FindLinkerLine(string filename) // make sure the file has a linker and re
 }
 
 /* Cycle through exits string, look for one less comma than user's input*/
-
+/*
 string getExit(string exits, int input, string* variables) { /* get exit from string of exits */
+/*
 	if (input <= 0)
 		throw (input);
 	string selectedExit = "";
@@ -100,4 +101,4 @@ string getFolder(string& selectedExit)
 	string foldername;// = currentfolder;
 	foldername = selectedExit.substr(0, selectedExit.find_last_of('\\') + 1);
 	return foldername;
-}
+}*/

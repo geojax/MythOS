@@ -34,7 +34,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="START.txt" />
-    <Text Include="Text.txt" />
+    <Text Include="START.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
