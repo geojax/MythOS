@@ -23,7 +23,7 @@ string Game::GetExit(string exits, int exitNum)
 {
 	string exit;
 
-	for (int i = 0; exitNum > 0 && exits[i] != EOF; ++i)
+	for (int i = 1; exitNum > 0 && exits[i] != EOF; ++i)
 	{
 		if (exits[i] == ',')
 		{
@@ -34,6 +34,10 @@ string Game::GetExit(string exits, int exitNum)
 		{
 			--exitNum;
 		}
+		else
+		{
+			exit += exits[i];
+		}
 	}
 
 	if (exitNum > 0)
@@ -41,7 +45,7 @@ string Game::GetExit(string exits, int exitNum)
 		cout << "(your input was not an option. try again.)\n";
 		return "";
 	}
-
+	return exit;
 }
 
 string Game::SkipToNextStar()
@@ -142,7 +146,7 @@ string Game::ExecuteCurrentFileAndGetExits()
 	{
 		getline(currentFile, currentLine);
 
-		ExecuteFirstChar(currentLine); // for conditionals, variables, and linker lines
+		if (ExecuteFirstChar(currentLine) == 0) break; // for conditionals, variables, and linker lines
 
 		for (int i = 0; i < currentLine.length(); ++i) 
 		{
@@ -160,17 +164,17 @@ string Game::ExecuteCurrentFileAndGetExits()
 	//lineNumber = 0;
 }
 
-bool Game::ChangeFile(string next_file)
+int Game::ChangeFile(string next_file)
 {
+	if (next_file == "End")
+		return -1;
 	currentFile.close();
 	currentFile = ifstream(next_file);
 
 	// check if the file exists
-	if (!currentFile)
-		return false;
-
+	return (bool)currentFile;
 	// check if the file has a linker line
-	FindLinkerLine();
+	//FindLinkerLine();
 }
 
 void Game::Run()
@@ -193,13 +197,13 @@ void Game::Run()
 		}
 
 		//switch file to input and repeat
-
+		if (ChangeFile(exit) == -1) return;
 	}
 }
 
 Game::Game(string startfile)
 {
-	FileToStrArray(VARIABLES_PATH, variables);
+	//FileToStrArray(VARIABLES_PATH, variables);
 	currentFilename = startfile;
 	currentFile = ifstream(startfile);
 	lineNumber = 0;

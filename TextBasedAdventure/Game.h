@@ -16,7 +16,7 @@ class Game
 	string variables[100];// array of variables
 	int lineNumber;
 
-	bool ChangeFile(string next_file); // close current file, open a new one
+	int ChangeFile(string next_file); // close current file, open a new one
 	void ExecuteCommand(char c); // execute code for a user's command within a file, e.g. \t or \%
 	void ExecuteConditional();
 	int ExecuteFirstChar(string line);
