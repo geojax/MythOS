@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Header.h"
-
+#include "Variable.h"
 using namespace std;
 
 int main() {
@@ -9,10 +9,11 @@ int main() {
 	cout << "Made with MythOS\n Copyright 2021 Micha Rand and Alex Su\n\n";
 
 	bool gameIsRunning = true;
+	string variables[MAX_VARIABLES];
+	FileToStrArray(VARIABLES_PATH, variables);
 
 	string exits = FindLinkerLine(START_FILE_STRING); // exits as one long string, commas in between
-
-	PrintFile(START_FILE_STRING);
+	PrintFile(START_FILE_STRING, variables);
 
 	string currentFile; // the file MythOS will print to console
 	string currentFolder = ""; // the folder path to be prepended to all files until PARENTFOLDER\ is added
@@ -39,7 +40,8 @@ int main() {
 
 		try
 		{
-			string exit = getExit(exits, iInput); // contains entire path if it's there
+
+			string exit = getExit(exits, iInput, variables); // contains entire path if it's there
 			currentFile = exit.substr(exit.find_last_of('\\') + 1) + ".txt"; // uses the last string of exits to find the right exit
 			string getFolderResult = getFolder(exit);
 			if (getFolderResult.substr(0, 12) == "PARENTFOLDER")
@@ -50,6 +52,7 @@ int main() {
 			else {
 				currentFolder += getFolderResult;
 			}
+
 		}
 		catch (int input) {
 			cout << "(your input was not an option)\n\n";
@@ -64,7 +67,7 @@ int main() {
  for now try a different input.)";
 			goto GetInput;
 		}
-		PrintFile(currentFolder + currentFile);
+		PrintFile(currentFolder + currentFile, variables);
 	}
 	return 0;
 }

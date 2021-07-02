@@ -1,0 +1,25 @@
+The Captain sits back in his swivel chair. He stares at your ceiling for a few minutes, thinking. You turn the heater on to warm the ship's interior. 
+The Captain peeks out his window to catch another glance of the woman. She is busy figuring out some bills.
+\%\t"Let's go, Terra."\t
+\%You lift off masterfully. The lights of the space station fade away as your ship accelerates. You sense the communication signals of the far-off enforcers.
+\%Wait a second...
+\%Faint signals coming in at a 95 degree angle to your stern...
+\%Even fainter from an 85 degree angle at your hull...
+\t\%CALCULATING
+signal_strength=0.045
+signal_strength2=TOO WEAK TO CALCULATE
+s=S0 * pow(0.99523316, d)
+S0avg = 120
+.......................\t
+The two signals are parallel to each other. They cross straight through your ship. There is some sort of communication by two ships on either side of you. But enforcers are far off. The weakness of the signals suggests their producers are distant (not even you can decipher them), yet communication must be taking place, unless the parallel signals are a terrible coincidence. Such would be incredibly unlikely in this solar system.
+
+You increase your acceleration.
+\%\t"Captain, enforcers are nearby. I will take you to System AC-203. Planet B-2 has a substantial atmosphere that will inhibit any enforcers from detecting you."
+\%The Captain nods slowly. He is sad. He looks back at the space station. It is too distant, however, for human eyes to perceive by now.
+\%\t"Alright, Terra."\t
+*VisitedGraves
+He smiles, thinking of his lost crewmates. They were his responsibility, he knows. If only they had been as clever as him.
+\t\%"I miss the crew...
+                     Thanks for letting me know about the enforcers, Terra."
+\%1)"That is my job, Captain."
+[PARENTFOLDER\End]
