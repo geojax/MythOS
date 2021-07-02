@@ -42,7 +42,7 @@ Instead of PARENTFOLDER, you can now use the more conventional
 			Little technicalities
 
 ~~You can't have more than 200 newlines in a single description.
-Contact us if you need more! ~~
+Contact us if you need more!~~
 No longer any need for this limit. Be free!
 
 Always make sure to end your files with the linker line! 
