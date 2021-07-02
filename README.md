@@ -31,15 +31,19 @@ the full filepath to that file ("folder1\folder2\myFile.txt", for example).
 Once you're in the folder, MythOS remembers and you don't need to keep
 adding the full filepath!
 
-To go back to the top folder (where _MythOS.exe is located), 
+~~To go back to the top folder (where _MythOS.exe is located), 
 start the filepath with "PARENTFOLDER\..." and MythOS will reset whatever
-filepath it was storing. You're back in the parent folder!
+filepath it was storing. You're back in the parent folder!~~
+
+Instead of PARENTFOLDER, you can now use the more conventional
+"../" to go up a folder. 
 
 -----------------------------------------------------------------
 			Little technicalities
 
-You can't have more than 200 newlines in a single description.
-Contact us if you need more! 
+~~You can't have more than 200 newlines in a single description.
+Contact us if you need more! ~~
+No longer any need for this limit. Be free!
 
 Always make sure to end your files with the linker line! 
 (It must be surrounded by square brackets, [ and ])
@@ -48,3 +52,5 @@ NEW! You can use \% (that is forward-slash + percent sign, in markdown looks lik
 in the middle of your writing. Tip: Use at the beginning of new paragraphs
 so that players can easily see the new text pop up when they press enter.
 
+Use a \\T to turn on the typewriter effect.
+\\t turns off the effect.
